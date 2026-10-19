@@ -91,13 +91,13 @@ This document is the actionable task contract for developing `tree-tui`. It brea
 ---
 
 ## Phase 6: Platform Clipboard Integration (`tree_tui.platform.clipboard`)
-- [ ] **Task 6.1: Write tests in `tests/test_clipboard.py`**
+- [x] **Task 6.1: Write tests in `tests/test_clipboard.py`**
   - Mock platform binaries (`pbcopy`, `wl-copy`, `xclip`, `xsel`).
   - Test macOS clipboard execution (`pbcopy`).
   - Test Linux Wayland clipboard execution (`wl-copy`).
   - Test Linux X11 clipboard execution (`xclip`/`xsel`).
   - Test graceful fallback when no clipboard utility is installed (`ClipboardError`).
-- [ ] **Task 6.2: Implement `src/tree_tui/platform/clipboard.py`**
+- [x] **Task 6.2: Implement `src/tree_tui/platform/clipboard.py`**
   - Detect platform and locate executable binary via `shutil.which`.
   - Implement `copy_to_clipboard(text: str) -> None`.
   - Verify all tests pass with `uv run pytest tests/test_clipboard.py`.
