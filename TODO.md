@@ -75,14 +75,14 @@ This document is the actionable task contract for developing `tree-tui`. It brea
 ---
 
 ## Phase 5: Shell Command Generator (`tree_tui.core.generator`)
-- [ ] **Task 5.1: Write tests in `tests/test_generator.py`**
+- [x] **Task 5.1: Write tests in `tests/test_generator.py`**
   - Test generation of `mkdir -p` for pure directory structures.
   - Test generation of `touch` for file paths.
   - Test parent directory creation ahead of `touch` (or combined `mkdir -p && touch`).
   - Test path escaping with spaces or special characters using `shlex.quote`.
   - Test leaf empty directory retention.
   - Test one-liner format (`mkdir -p ... && touch ...`) vs multi-line format.
-- [ ] **Task 5.2: Implement `src/tree_tui/core/generator.py`**
+- [x] **Task 5.2: Implement `src/tree_tui/core/generator.py`**
   - Implement path collection by walking `TreeNode`.
   - Group directories and files into clean, deduplicated POSIX shell commands.
   - Implement `generate_shell_command(root: TreeNode, one_liner: bool = False) -> str`.
