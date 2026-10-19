@@ -59,7 +59,7 @@ This document is the actionable task contract for developing `tree-tui`. It brea
 ---
 
 ## Phase 4: ASCII / Unicode Tree Renderer (`tree_tui.core.renderer`)
-- [ ] **Task 4.1: Write tests in `tests/test_renderer.py`**
+- [x] **Task 4.1: Write tests in `tests/test_renderer.py`**
   - Test Unicode glyph rendering (`├── `, `└── `, `│   `, `    `).
   - Test ASCII glyph rendering (`|-- `, `` `-- ``, `|   `, `    `).
   - Test single node tree (just root name).
@@ -67,7 +67,7 @@ This document is the actionable task contract for developing `tree-tui`. It brea
   - Test multi-level nested subtrees with correct ancestor branch vertical pipes.
   - Test virtual root rendering (children rendered without top-level wrapper name).
   - Test directory trailing slashes in rendered output.
-- [ ] **Task 4.2: Implement `src/tree_tui/core/renderer.py`**
+- [x] **Task 4.2: Implement `src/tree_tui/core/renderer.py`**
   - Implement `TreeGlyphs` dataclass with `GLYPHS_UNICODE` and `GLYPHS_ASCII` presets.
   - Implement recursive or stack-based `render_tree(root: TreeNode, glyphs: TreeGlyphs = GLYPHS_UNICODE) -> str`.
   - Verify all tests pass with `uv run pytest tests/test_renderer.py`.
