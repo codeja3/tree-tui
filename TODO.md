@@ -24,13 +24,13 @@ This document is the actionable task contract for developing `tree-tui`. It brea
 ---
 
 ## Phase 2: Core Domain Model (`tree_tui.core.model`)
-- [ ] **Task 2.1: Write tests in `tests/test_model.py`**
+- [x] **Task 2.1: Write tests in `tests/test_model.py`**
   - Test `TreeNode` creation (name, `node_type`).
   - Test `NodeType.DIRECTORY` vs `NodeType.FILE`.
   - Test `add_child` linking: check `child.parent` assignment and `children` list ordering.
   - Test `is_dir` property: explicitly directory vs implicitly directory when children exist.
   - Test nested hierarchy traversal and path calculation.
-- [ ] **Task 2.2: Implement `src/tree_tui/core/model.py`**
+- [x] **Task 2.2: Implement `src/tree_tui/core/model.py`**
   - Implement `NodeType` enum.
   - Implement `@dataclass TreeNode` with slots for performance.
   - Implement `add_child(self, child: TreeNode) -> None`.
