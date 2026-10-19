@@ -40,7 +40,7 @@ This document is the actionable task contract for developing `tree-tui`. It brea
 ---
 
 ## Phase 3: Outline & Indentation Parser (`tree_tui.core.parser`)
-- [ ] **Task 3.1: Write tests in `tests/test_parser.py`**
+- [x] **Task 3.1: Write tests in `tests/test_parser.py`**
   - Test standard 2-space and 4-space indentation.
   - Test tab-delimited indentation (`\t`).
   - Test bullet/marker stripping (`- `, `* `, `+ `, `1. `).
@@ -50,7 +50,7 @@ This document is the actionable task contract for developing `tree-tui`. It brea
   - Test comment lines starting with `#` (ignored).
   - Test multi-root outline (returns implicit virtual root).
   - Test invalid indentation jumps (raise `ValueError`).
-- [ ] **Task 3.2: Implement `src/tree_tui/core/parser.py`**
+- [x] **Task 3.2: Implement `src/tree_tui/core/parser.py`**
   - Implement `parse_outline(text: str) -> TreeNode` using an indent-tracking stack.
   - Normalize tab stops (default 4 spaces).
   - Support list marker stripping while accurately counting prefix indent levels.
