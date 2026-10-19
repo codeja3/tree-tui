@@ -1,0 +1,45 @@
+Screen {
+    layout: vertical;
+}
+
+#main-container {
+    height: 1fr;
+    layout: horizontal;
+}
+
+#editor-pane {
+    width: 1fr;
+    height: 1fr;
+    border: round $primary;
+    padding: 0 1;
+}
+
+#preview-pane {
+    width: 1fr;
+    height: 1fr;
+    border: round $accent;
+    padding: 0 1;
+    overflow-y: auto;
+}
+
+#editor {
+    height: 1fr;
+}
+
+#preview {
+    height: auto;
+    width: 100%;
+}
+
+#status-bar {
+    height: 1;
+    dock: bottom;
+    background: $surface;
+    color: $text-muted;
+    padding: 0 1;
+}
+
+.error-badge {
+    color: $error;
+    text-style: bold;
+}

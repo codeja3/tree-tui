@@ -120,14 +120,14 @@ This document is the actionable task contract for developing `tree-tui`. It brea
 ---
 
 ## Phase 8: Interactive TUI Application (`tree_tui.tui`)
-- [ ] **Task 8.1: Write TUI pilot tests in `tests/test_tui.py`**
+- [x] **Task 8.1: Write TUI pilot tests in `tests/test_tui.py`**
   - Use `textual.pilot` to test app launch without a live terminal.
   - Test input in `#editor` triggers update in `#preview`.
   - Test keybinding `ctrl+y` / `ctrl+b` calls clipboard copy for tree diagram.
   - Test keybinding `ctrl+g` calls clipboard copy for generated shell command.
   - Test keybinding `ctrl+r` resets editor to starter template.
   - Test syntax error handling: malformed outline displays subtle warning without crashing app.
-- [ ] **Task 8.2: Implement `src/tree_tui/tui/app.py` & `styles.tcss`**
+- [x] **Task 8.2: Implement `src/tree_tui/tui/app.py` & `styles.tcss`**
   - Create Textual `App` with `Header`, `Footer`, left `TextArea`, and right `Static`/`RichLog`.
   - Implement debounced event handler on `TextArea.Changed`.
   - Add help modal dialog (`f1` / `?`).
