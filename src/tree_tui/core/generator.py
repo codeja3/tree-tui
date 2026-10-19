@@ -30,18 +30,10 @@ def generate_shell_command(root: TreeNode, one_liner: bool = False) -> str:
         else:
             files_to_touch.append(path)
 
-    # In outlines, root acts as the container context whose children are generated
     for child in root.children:
         collect(child, "")
 
     # Prune redundant parent directories if their descendant subdirectories or direct files are created
-    # Leaf empty directories must be retained. Also ensure every directory path needed is covered.
-    # Specifically: if dir2/subdir is created, dir2 is automatically created by mkdir -p dir2/subdir.
-    # And if dir1 has only files (or files directly inside), dir1 is created with mkdir -p dir1.
-    # Group directories:
-    # 1) Any directory with children that are files needs mkdir -p <dir>
-    # 2) Any leaf directory (no children) needs mkdir -p <dir>
-    # Collect all leaf or deepest needed dir paths:
     needed_dirs: OrderedDict[str, None] = OrderedDict()
 
     # Find which directories directly contain files
@@ -53,12 +45,9 @@ def generate_shell_command(root: TreeNode, one_liner: bool = False) -> str:
     leaf_dirs = dir_set - subdirs_with_children
 
     for d in raw_dirs:
-        # Keep if leaf directory or directly contains files
         if d in leaf_dirs or d in dirs_with_files:
-            # Further optimize: if a deeper directory starts with f"{d}/", mkdir -p of the deeper covers it
             needed_dirs[d] = None
 
-    # Filter out prefixes covered by deeper dirs
     all_needed = list(needed_dirs.keys())
     final_dirs: list[str] = []
     for d in all_needed:

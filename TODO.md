@@ -105,13 +105,13 @@ This document is the actionable task contract for developing `tree-tui`. It brea
 ---
 
 ## Phase 7: CLI Controller (`tree_tui.cli`)
-- [ ] **Task 7.1: Write tests in `tests/test_cli.py`**
+- [x] **Task 7.1: Write tests in `tests/test_cli.py`**
   - Test reading outline from STDIN (`sys.stdin`).
   - Test reading outline from file path argument (`tree-tui outline.txt`).
   - Test ASCII mode flag (`--ascii`).
   - Test shell command generator flag (`-c`, `--generate-command`).
   - Test opening TUI mode when run with no piped input and no file argument.
-- [ ] **Task 7.2: Implement `src/tree_tui/cli.py`**
+- [x] **Task 7.2: Implement `src/tree_tui/cli.py`**
   - Build `argparse` CLI interface.
   - Route execution to parser, renderer, or generator based on flags.
   - Launch Textual TUI when interactive mode is detected (TTY + no pipe).
