@@ -23,19 +23,46 @@ A decoupled, high-performance terminal utility and interactive TUI for convertin
 
 ## Installation & Setup
 
-`tree-tui` is managed with [`uv`](https://github.com/astral-sh/uv). Ensure you have Python >= 3.11 installed.
+Ensure you have Python >= 3.11 installed.
 
-### 1. Clone the repository
+### Option 1: Standalone CLI Tool via `uv tool` or `pipx` (Recommended)
+
+To install `tree-tui` globally into an isolated environment accessible from anywhere on your system:
+
+```bash
+# Directly from the GitHub repository
+uv tool install git+https://github.com/codeja3/tree-tui.git
+
+# Or with pipx
+pipx install git+https://github.com/codeja3/tree-tui.git
+```
+
+If you have a local checkout:
+```bash
+# Editable install (reflects local changes immediately)
+uv tool install --editable .
+
+# Standard install
+uv tool install .
+```
+
+Once installed, simply run `tree-tui` from anywhere.
+
+---
+
+### Option 2: Local Development Setup
+
+Clone the repository and install dependencies using [`uv`](https://github.com/astral-sh/uv):
+
 ```bash
 git clone https://github.com/codeja3/tree-tui.git
 cd tree-tui
-```
 
-### 2. Install dependencies with `uv`
-```bash
 # Sync runtime and dev dependencies
 uv sync --all-extras
 ```
+
+When developing locally, run commands using `uv run tree-tui`.
 
 ---
 
