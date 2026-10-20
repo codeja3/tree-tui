@@ -136,11 +136,11 @@ This document is the actionable task contract for developing `tree-tui`. It brea
 ---
 
 ## Phase 9: Performance Benchmarking & Hardening
-- [ ] **Task 9.1: Implement performance test in `tests/test_perf.py`**
+- [x] **Task 9.1: Implement performance test in `tests/test_perf.py`**
   - Generate synthetic 1,000-line nested tree input.
   - Measure execution time of `parse_outline` + `render_tree`.
   - Assert that execution completes in `< 16ms`.
-- [ ] **Task 9.2: Code Quality, Linting, & Type Checking**
+- [x] **Task 9.2: Code Quality, Linting, & Type Checking**
   - Run `uv run ruff check src tests`.
   - Run `uv run mypy src`.
   - Verify 100% full test suite pass: `uv run pytest --cov=tree_tui`.
