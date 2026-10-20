@@ -215,9 +215,12 @@ tree-tui/
     ├── test_renderer.py
     └── test_tui.py
 ```
-
 ---
 
 ## License
 
 Apache License 2.0. See project files for details.
+
+---
+
+Built with qwen3-coder:30b on Ollama and Gemini-3.8-Flash as a reviewer. 
