@@ -7,6 +7,7 @@ from textual.app import App, ComposeResult
 from textual.binding import Binding, BindingType
 from textual.containers import Horizontal, Vertical
 from textual.screen import ModalScreen
+from textual.timer import Timer
 from textual.widgets import Footer, Header, Static, TextArea
 
 from tree_tui.core.generator import generate_shell_command
@@ -62,7 +63,7 @@ class HelpScreen(ModalScreen[None]):
 class TreeTuiApp(App[None]):
     """Interactive outline-to-tree editor and generator."""
 
-    CSS_PATH = Path("styles.tcss")
+    CSS_PATH = Path(__file__).parent / "styles.tcss"
     TITLE = "tree-tui"
 
     BINDINGS: ClassVar[list[BindingType]] = [
@@ -80,6 +81,7 @@ class TreeTuiApp(App[None]):
         self.initial_text = initial_text
         self.last_rendered_tree: str = ""
         self.last_shell_cmd: str = ""
+        self._debounce_timer: Timer | None = None
 
     def compose(self) -> ComposeResult:
         yield Header()
@@ -96,7 +98,10 @@ class TreeTuiApp(App[None]):
         self._update_preview(editor.text)
 
     def on_text_area_changed(self, event: TextArea.Changed) -> None:
-        self._update_preview(event.text_area.text)
+        if self._debounce_timer is not None:
+            self._debounce_timer.stop()
+        text = event.text_area.text
+        self._debounce_timer = self.set_timer(0.01, lambda: self._update_preview(text))
 
     def _update_preview(self, text: str) -> None:
         preview = self.query_one("#preview", Static)

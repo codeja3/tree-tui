@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import shlex
 from collections import OrderedDict
+from pathlib import PurePosixPath
 
 from tree_tui.core.model import NodeType, TreeNode
 
@@ -20,28 +21,29 @@ def generate_shell_command(root: TreeNode, one_liner: bool = False) -> str:
     raw_dirs: list[str] = []
     files_to_touch: list[str] = []
 
-    def collect(node: TreeNode, current_prefix: str) -> None:
-        path = f"{current_prefix}/{node.name}" if current_prefix else node.name
+    def collect(node: TreeNode, current_prefix: PurePosixPath | None) -> None:
+        path_obj = current_prefix / node.name if current_prefix is not None else PurePosixPath(node.name)
+        path_str = str(path_obj)
 
         if node.is_dir:
-            raw_dirs.append(path)
+            raw_dirs.append(path_str)
             for child in node.children:
-                collect(child, path)
+                collect(child, path_obj)
         else:
-            files_to_touch.append(path)
+            files_to_touch.append(path_str)
 
     for child in root.children:
-        collect(child, "")
+        collect(child, None)
 
     # Prune redundant parent directories if their descendant subdirectories or direct files are created
     needed_dirs: OrderedDict[str, None] = OrderedDict()
 
     # Find which directories directly contain files
-    dirs_with_files = {p.rsplit("/", 1)[0] for p in files_to_touch if "/" in p}
+    dirs_with_files = {PurePosixPath(p).parent.as_posix() for p in files_to_touch if "/" in p}
 
     # Find all directories that have no subdirectory children
     dir_set = set(raw_dirs)
-    subdirs_with_children = {p.rsplit("/", 1)[0] for p in raw_dirs if "/" in p}
+    subdirs_with_children = {PurePosixPath(p).parent.as_posix() for p in raw_dirs if "/" in p}
     leaf_dirs = dir_set - subdirs_with_children
 
     for d in raw_dirs:
